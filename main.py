@@ -137,3 +137,4 @@ if __name__ == '__main__':
     #bumble_connector = BumbleConnector(driver)
     dating_connector = tinder_connector
     uvicorn.run(app, host='0.0.0.0', port=8080)
+#teste
