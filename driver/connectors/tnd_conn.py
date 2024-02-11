@@ -49,10 +49,9 @@ class TinderConnector():
 
         # delay to let gold enforser to appear
         time.sleep(random.uniform(2, 3))
-        if self.driver.find_element('xpath', self.close_tnd_gold_enforser_xpath):
+        if self.driver.find_elements('xpath', self.close_tnd_gold_enforser_xpath):
             self.driver.find_element('xpath', self.close_tnd_gold_enforser_xpath).click()
             print('Tinder gold enforcer closed')
-
 
     def close_app(self):
         print('Closing Tinder')
@@ -115,7 +114,17 @@ class TinderConnector():
         print(f'Got name_age: {name_age}')
         return name_age
 
-    def get_bio(self, girl_nr=1):
+    def get_number_of_openers(self):
+        print("get number of girls")
+        self.driver.find_element('xpath', self.match_tab_xpath).click()
+        time.sleep(random.uniform(2, 4))
+
+        number_of_girls = self.driver.find_elements(By.CSS_SELECTOR, 'ul > li.P\(8px\)')
+        number_of_girls -= 2
+
+        return number_of_girls
+
+    def get_bio(self, girl_nr=2):
         print('get bio function')
         self.driver.find_element('xpath', self.match_tab_xpath).click()
         time.sleep(random.uniform(2, 4))
@@ -170,6 +179,7 @@ class TinderConnector():
             rise_msg = translate_rise_msg(orig_rise_msg)
             with open(f'{self.project_dir}/AI_logic/cached_messages/rise_msg.txt', 'w', encoding='utf-8') as file:
                 file.write(rise_msg)
+
 
 # misc functions
 def align_messages(messages):

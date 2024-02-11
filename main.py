@@ -57,6 +57,7 @@ def respond_nr(girl_nr: int = None):
 def respond_to_all():
     print("respond all request arrived")
     new_messages_nr = dating_connector.count_new_messages()
+    print(f"Tens:{new_messages_nr} por responder\n" * 30)
     for i in range(new_messages_nr):
         respond()
 
@@ -73,9 +74,10 @@ def write_opener():
 
 
 # function to send predefined nr of openers
-@app.get('/batch_openers/{nr_openers}')
-def write_openers(nr_openers: int = None):
+@app.get('/batch_openers')
+def write_openers():
     print("batch of openers request arrived")
+    nr_openers = dating_connector.get_number_of_openers()
     for i in range(nr_openers):
         name, bio = dating_connector.get_bio()
         message = AI_logic.opener.generate_opener(name, bio)
