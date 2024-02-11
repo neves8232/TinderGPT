@@ -120,7 +120,7 @@ class TinderConnector():
         time.sleep(random.uniform(2, 4))
 
         number_of_girls = self.driver.find_elements(By.CSS_SELECTOR, 'ul > li.P\(8px\)')
-        number_of_girls -= 2
+        number_of_girls = len(number_of_girls) - 2
 
         return number_of_girls
 
