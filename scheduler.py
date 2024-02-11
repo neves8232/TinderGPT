@@ -6,18 +6,19 @@ import datetime
 
 BASE_URL = 'http://localhost:8080'
 # configure here your sessions
+endpoints = ['/start_tnd', '/respond_all', '/batch_openers', '/close']
 SESSION_CONFIG = {
     'session1': {
-        'time_range': (9, 10),
-        'endpoints': ['/start_tnd', '/respond_all', '/batch_openers', '/close'],
+        'time_range': (10, 11),
+        'endpoints': endpoints,
     },
     'session2': {
         'time_range': (15, 16),
-        'endpoints': ['/start_tnd', '/respond_all', '/batch_openers', '/close'],
+        'endpoints': endpoints,
     },
     'session3': {
         'time_range': (20, 21),
-        'endpoints': ['/start_tnd', '/respond_all', '/batch_openers', '/close'],
+        'endpoints': endpoints,
     },
 }
 
